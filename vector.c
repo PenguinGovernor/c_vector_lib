@@ -1,6 +1,5 @@
-#include <assert.h>
-
 #include "vector.h"
+#include <assert.h>
 
 // Type definition
 // {{{
@@ -52,8 +51,6 @@ void freeVector(vector_t **pVec) {
 // {{{
 void *vectorGet(vector_t *pVec, size_t index) {
   assert(pVec != NULL);
-  assert(index < pVec->current_lenth);
-
   return pVec->array[index];
 }
 size_t vectorLength(vector_t *pVec) {
@@ -83,15 +80,8 @@ void vectorAdd(vector_t *pVec, void *pItem) {
 }
 
 void vectorInsertAt(vector_t **pVec, void *pItem, size_t index) {
+
   assert(pVec != NULL && *pVec != NULL);
-
-  assert(index > 0 && index < vectorLength(*pVec));
-
-  // If trying to insert at end, just call vector add
-  if (index == vectorLength(*pVec) - 1) {
-    vectorAdd(*pVec, pItem);
-    return;
-  }
 
   // Copy all the following items into a temp vector
   vector_t *sliceA = newVector(index + 1);
@@ -118,8 +108,6 @@ void vectorRemoveAt(vector_t **pVec, size_t index) {
   // to skip over the omitted item, also obviously doesn't
   // insert item
   assert(pVec != NULL && *pVec != NULL);
-
-  assert(index > 0 && index < vectorLength(*pVec));
 
   // Copy all the following items into a temp vector
   vector_t *sliceA = newVector(index + 1);
@@ -157,4 +145,6 @@ vector_t *vectorJoin(vector_t *pVecA, vector_t *pVecB) {
   // Return the joined vector
   return joinedVector;
 }
+// }}}
+
 // }}}
