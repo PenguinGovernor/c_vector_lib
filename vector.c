@@ -138,8 +138,8 @@ vector_t *vectorJoin(vector_t *pVecA, vector_t *pVecB) {
   }
 
   // Add B to the joined vector
-  for (size_t i = 0; i < vectorLength(pVecA); i += 1) {
-    vectorAdd(joinedVector, vectorGet(pVecA, i));
+  for (size_t i = 0; i < vectorLength(pVecB); i += 1) {
+    vectorAdd(joinedVector, vectorGet(pVecB, i));
   }
 
   // Return the joined vector
