@@ -85,7 +85,6 @@ void vectorInsertAt(vector_t **pVec, void *pItem, size_t index) {
   assert(pVec != NULL && *pVec != NULL);
   assert(index >= 0 && index < vectorLength(pVec));
 
-
   // Copy all the following items into a temp vector
   vector_t *sliceA = newVector(vectorLength(*pVec) + 1);
   for (size_t i = 0; i < index; i += 1) {
