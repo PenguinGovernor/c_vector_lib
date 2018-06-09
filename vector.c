@@ -51,7 +51,7 @@ void freeVector(vector_t **pVec) {
 // {{{
 void *vectorGet(vector_t *pVec, size_t index) {
   assert(pVec != NULL);
-  assert(index >= 0 && index < vectorLength(pVec));
+  assert(index < vectorLength(pVec));
   return pVec->array[index];
 }
 size_t vectorLength(vector_t *pVec) {
@@ -83,7 +83,7 @@ void vectorAdd(vector_t *pVec, void *pItem) {
 void vectorInsertAt(vector_t **pVec, void *pItem, size_t index) {
 
   assert(pVec != NULL && *pVec != NULL);
-  assert(index >= 0 && index < vectorLength(*pVec));
+  assert(index < vectorLength(*pVec));
 
   // Copy all the following items into a temp vector
   vector_t *sliceA = newVector(vectorLength(*pVec) + 1);
